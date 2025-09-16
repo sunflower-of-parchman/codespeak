@@ -3,7 +3,8 @@
 Repo-aware voice agent MVP.
 
 ## What it does
-Takes noisy developer utterances and produces a Plan: intent, resolved entities, and a safe command or diff. Uses repo context (files, packages, scripts) for accuracy.
+- Checker: cleans voice-y text (spell/grammar/context) using repo terms; outputs original+cleaned+edits.
+- Planner: optional; run with `--with-plan` to plan on the cleaned text.
 
 ## Quick start
 1. `cp .env.example .env` and set `OPENAI_API_KEY`.
