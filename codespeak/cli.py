@@ -9,7 +9,10 @@ from . import tools as tools_mod
 from .agent import respond, session
 from .checker import normalize_utterance
 
-app = typer.Typer(add_completion=False)
+app = typer.Typer(
+    add_completion=False,
+    help="Repo-aware voice agent CLI. Run `codespeak` on a transcript to normalize it, optionally plan actions, and inspect the checker edits.",
+)
 
 
 @app.callback(invoke_without_command=True)
@@ -20,6 +23,7 @@ def main(
         False, "--with-plan", help="Also run planner on cleaned text"
     ),
 ):
+    """Normalize a transcript, optionally plan on it, and print structured JSON."""
     if text is None:
         typer.echo(app.get_help(ctx=typer.get_current_context()))
         raise typer.Exit(0)
